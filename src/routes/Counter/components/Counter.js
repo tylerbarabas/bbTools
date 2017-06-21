@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const Counter = ({ counter, increment, doubleAsync }) => (
+export const Counter = ({ counter, increment, doubleAsync, triple }) => (
   <div style={{ margin: '0 auto' }} >
     <h2>Counter: {counter}</h2>
     <button className='btn btn-primary' onClick={increment}>
@@ -10,6 +10,9 @@ export const Counter = ({ counter, increment, doubleAsync }) => (
     {' '}
     <button className='btn btn-secondary' onClick={doubleAsync}>
       Double (Async)
+    </button>
+    <button className='btn btn-secondary' onClick={triple}>
+     Triple
     </button>
   </div>
 )
