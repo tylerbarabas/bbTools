@@ -1,17 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
-
-const Container = styled.div`
-  background-color: red;
-  height: 30px;
-  width: 30px;
-`;
+import FrameSelector from './FrameSelector'
 
 export const LipSyncer = ({ lipsyncer, increment, doubleAsync, triple }) => (
-  <Container>
-     
-  </Container>
+  <div>
+    <FrameSelector />
+  </div>
 )
 
 LipSyncer.propTypes = {
