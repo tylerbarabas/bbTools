@@ -2,16 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import FrameSelector from './FrameSelector'
 
-export const LipSyncer = ({ lipsyncer, increment, doubleAsync, triple }) => (
+export const LipSyncer = ({ data, selectFrame }) => (
   <div>
-    <FrameSelector />
+    <FrameSelector selectFrame={selectFrame} data={data} />
   </div>
 )
 
 LipSyncer.propTypes = {
-  lipsyncer: PropTypes.number.isRequired,
-  increment: PropTypes.func.isRequired,
-  doubleAsync: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
 }
 
 export default LipSyncer

@@ -16,37 +16,34 @@ const Selection = styled.div`
   background-color: red;
 `;
 
-const handleClick = (e) => {
-  console.log('handleClick',e.target);
-}
 
-export const FrameSelector = () => (
+export const FrameSelector = ({ data, selectFrame }) => (
 <div>
   <Container>
-    <Selection onClick={handleClick}>
+    <Selection onClick={()=>{selectFrame(0)}}>
       <FrameViewer frame={0} />
     </Selection>
-    <Selection>
+    <Selection onClick={()=>{selectFrame(1)}}>
       <FrameViewer frame={1} />
     </Selection>
-    <Selection>
+    <Selection onClick={()=>{selectFrame(2)}}>
       <FrameViewer frame={2} />
     </Selection>
-    <Selection>
+    <Selection onClick={()=>{selectFrame(3)}}>
       <FrameViewer frame={3} />
     </Selection>
   </Container>
   <Container>
-    <Selection>
+    <Selection onClick={()=>{selectFrame(4)}}>
       <FrameViewer frame={4} />
     </Selection>
-    <Selection>
+    <Selection onClick={()=>{selectFrame(5)}}>
       <FrameViewer frame={5} />
     </Selection>
-    <Selection>
+    <Selection onClick={()=>{selectFrame(6)}}>
       <FrameViewer frame={6} />
     </Selection>
-    <Selection>
+    <Selection onClick={()=>{selectFrame(7)}}>
       <FrameViewer frame={7} />
     </Selection>
   </Container>
