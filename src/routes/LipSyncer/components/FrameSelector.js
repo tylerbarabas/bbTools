@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import styledClass from 'styled-classnames'
 import FrameViewer from './FrameViewer'
 
 const Container = styled.div`
@@ -16,38 +17,53 @@ const Selection = styled.div`
   background-color: red;
 `;
 
+const active = styledClass`
+  outline: ${ (props) => (props.id === props.selected) ? '1px solid red' : 'none' }
+`;
 
-export const FrameSelector = ({ data, selectFrame }) => (
-<div>
-  <Container>
-    <Selection onClick={()=>{selectFrame(0)}}>
-      <FrameViewer frame={0} />
-    </Selection>
-    <Selection onClick={()=>{selectFrame(1)}}>
-      <FrameViewer frame={1} />
-    </Selection>
-    <Selection onClick={()=>{selectFrame(2)}}>
-      <FrameViewer frame={2} />
-    </Selection>
-    <Selection onClick={()=>{selectFrame(3)}}>
-      <FrameViewer frame={3} />
-    </Selection>
-  </Container>
-  <Container>
-    <Selection onClick={()=>{selectFrame(4)}}>
-      <FrameViewer frame={4} />
-    </Selection>
-    <Selection onClick={()=>{selectFrame(5)}}>
-      <FrameViewer frame={5} />
-    </Selection>
-    <Selection onClick={()=>{selectFrame(6)}}>
-      <FrameViewer frame={6} />
-    </Selection>
-    <Selection onClick={()=>{selectFrame(7)}}>
-      <FrameViewer frame={7} />
-    </Selection>
-  </Container>
-</div>
-)
+
+class FrameSelector extends React.Component {
+
+frameClicked(id) {
+  this.props.selectFrame(id)
+}
+
+render() {
+
+  let { data, selectFrame } = this.props;
+  return (
+    <div>
+      <Container>
+        <Selection onClick={this.frameClicked.bind(this,0)} className={active({id:0,selected: data.selected})}>
+          <FrameViewer frame={0} />
+        </Selection>
+        <Selection onClick={this.frameClicked.bind(this,1)} className={active({id:1,selected: data.selected})}>
+          <FrameViewer frame={1} />
+        </Selection>
+        <Selection onClick={this.frameClicked.bind(this,2)} className={active({id:2,selected: data.selected})}>
+          <FrameViewer frame={2} />
+        </Selection>
+        <Selection onClick={this.frameClicked.bind(this,3)} className={active({id:3,selected: data.selected})}>
+          <FrameViewer frame={3} />
+        </Selection>
+      </Container>
+      <Container>
+        <Selection onClick={this.frameClicked.bind(this,4)} className={active({id:4,selected: data.selected})}>
+          <FrameViewer frame={4} />
+        </Selection>
+        <Selection onClick={this.frameClicked.bind(this,5)} className={active({id:5,selected: data.selected})}>
+          <FrameViewer frame={5} />
+        </Selection>
+        <Selection onClick={this.frameClicked.bind(this,6)} className={active({id:6,selected: data.selected})}>
+          <FrameViewer frame={6} />
+        </Selection>
+        <Selection onClick={this.frameClicked.bind(this,7)} className={active({id:7,selected: data.selected})}>
+          <FrameViewer frame={7} />
+        </Selection>
+      </Container>
+    </div>
+    )
+  }
+}
 
 export default FrameSelector

@@ -6,10 +6,12 @@ export const SELECT_FRAME = 'SELECT_FRAME'
 // Actions
 // ------------------------------------
 
+
+
 export function selectFrame (id = 0) {
   return {
     type: SELECT_FRAME,
-    payload: id
+    id: id
   }
 }
 
@@ -33,9 +35,10 @@ const ACTION_HANDLERS = {
 // Reducer
 // ------------------------------------
 const initialState = { 
-  selected: 0,
-  instructions: []
+  instructions: {},
+  selected: 0
 };
+
 export default function counterReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
   return handler ? handler(state, action) : state
