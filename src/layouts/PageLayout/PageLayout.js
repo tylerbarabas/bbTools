@@ -5,13 +5,8 @@ import styled from 'styled-components'
 
 export const PageLayout = ({ children }) => (
   <div className='text-center'>
-    <h1>bbTools</h1>
-    <IndexLink to='/'>Home</IndexLink>
-    {' · '}
-    <Link to='/counter'>Counter</Link>
-    {' · '}
-    <Link to='/lipsyncer'>Lip Syncer</Link>
-    <div>
+    <h1>Lip Syncer</h1>
+   <div>
       {children}
     </div>
   </div>

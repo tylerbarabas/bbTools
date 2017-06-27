@@ -10,10 +10,10 @@ import LipSyncerRoute from './LipSyncer'
 export const createRoutes = (store) => ({
   path        : '/',
   component   : CoreLayout,
-  indexRoute  : Home,
+  indexRoute  : LipSyncerRoute(store),
   childRoutes : [
     CounterRoute(store),
-    LipSyncerRoute(store)
+//    LipSyncerRoute(store)
   ]
 })
 
