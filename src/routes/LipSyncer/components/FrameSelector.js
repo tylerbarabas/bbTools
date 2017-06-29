@@ -6,7 +6,6 @@ import FrameViewer from './FrameViewer'
 
 const Container = styled.div`
   padding: 5px;
-  outline: thin dashed red;
 `;
 
 const Selection = styled.div`
@@ -14,7 +13,6 @@ const Selection = styled.div`
   margin: 20px;
   height: 200px;
   width: 200px;
-  background-color: red;
 `;
 
 const active = styledClass`
