@@ -10,12 +10,12 @@ export const SELECT_FRAME = 'SELECT_FRAME'
 
 
 
-export function selectFrame (id = 0, time = 0) {
+export function selectFrame (frameid = 0, time = 0) {
   return {
     type: SELECT_FRAME,
     payload: {
       time: time,
-      id: id
+      frameid: frameid
     }
   }
 }
@@ -29,14 +29,18 @@ export const actions = {
 // ------------------------------------
 const ACTION_HANDLERS = {
   [SELECT_FRAME] : (state, action) => {
+    let id = uuidv4();
+    for (var i in state.instructions) {
+      if (state.instructions[i].time === action.payload.time) id = i;
+    }
     return {
       ...state,
       selected: action.payload.id,
       instructions: {
         ...state.instructions,
-        [uuidv4()]: {
+        [id]: {
           time: action.payload.time,
-          frameid: action.payload.id
+          frameid: action.payload.frameid
         }
       }
     }
