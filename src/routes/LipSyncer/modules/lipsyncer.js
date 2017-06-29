@@ -1,3 +1,5 @@
+import uuidv4 from 'uuid-v4'
+
 // ------------------------------------
 // Constants
 // ------------------------------------
@@ -8,10 +10,13 @@ export const SELECT_FRAME = 'SELECT_FRAME'
 
 
 
-export function selectFrame (id = 0) {
+export function selectFrame (id = 0, time = 0) {
   return {
     type: SELECT_FRAME,
-    id: id
+    payload: {
+      time: time,
+      id: id
+    }
   }
 }
 
@@ -26,7 +31,14 @@ const ACTION_HANDLERS = {
   [SELECT_FRAME] : (state, action) => {
     return {
       ...state,
-      selected: action.id
+      selected: action.payload.id,
+      instructions: {
+        ...state.instructions,
+        [uuidv4()]: {
+          time: action.payload.time,
+          frameid: action.payload.id
+        }
+      }
     }
   }
 }

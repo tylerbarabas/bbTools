@@ -25,11 +25,11 @@ const active = styledClass`
 class FrameSelector extends React.Component {
 
 frameClicked(id) {
-  this.props.selectFrame(id)
+  let audioPlayer = document.getElementById('audio-player');
+  this.props.selectFrame(id, audioPlayer.currentTime)
 }
 
 render() {
-
   let { data, selectFrame } = this.props;
   return (
     <div>
