@@ -35,7 +35,7 @@ const ACTION_HANDLERS = {
     }
     return {
       ...state,
-      selected: action.payload.id,
+      selected: action.payload.frameid,
       instructions: {
         ...state.instructions,
         [id]: {

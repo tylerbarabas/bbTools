@@ -24,7 +24,7 @@ class FrameSelector extends React.Component {
 
 frameClicked(id) {
   let audioPlayer = document.getElementById('audio-player');
-  this.props.selectFrame(id, audioPlayer.currentTime)
+  this.props.selectFrame(id, audioPlayer.currentTime, this.props.data)
 }
 
 render() {
