@@ -40,12 +40,12 @@ class InstructionsViewer extends React.Component {
           <Header style={{width: '70%'}}>
             Time
           </Header>
-            {Object.keys(data.instructions).map((key)=>(
+            {Object.keys(data.instructions).sort((a,b)=>data.instructions[b].time-data.instructions[a].time).map((key)=>(
             <div key={key}>
               <Data style={{width: '30%'}}>{data.instructions[key].frameid}</Data>
               <Data style={{width: '70%', cursor: 'pointer'}} onClick={this.goToTime}>{data.instructions[key].time}</Data>
             </div>
-          )).reverse()}
+          ))}
         </div>
       </Container>
     )
