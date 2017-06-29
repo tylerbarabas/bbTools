@@ -4,11 +4,11 @@ import uuidv4 from 'uuid-v4'
 // Constants
 // ------------------------------------
 export const SELECT_FRAME = 'SELECT_FRAME'
+export const CHANGE_PLAYBACK_RATE = 'CHANGE_PLAYBACK_RATE'
+
 // ------------------------------------
 // Actions
 // ------------------------------------
-
-
 
 export function selectFrame (frameid = 0, time = 0) {
   return {
@@ -20,8 +20,16 @@ export function selectFrame (frameid = 0, time = 0) {
   }
 }
 
+export function changePlaybackRate ( newRate = 1 ) {
+  return {
+    type: CHANGE_PLAYBACK_RATE,
+    rate: newRate
+  }
+}
+
 export const actions = {
-  selectFrame
+  selectFrame,
+  changePlaybackRate
 }
 
 // ------------------------------------
@@ -44,7 +52,13 @@ const ACTION_HANDLERS = {
         }
       }
     }
-  }
+  },
+  [CHANGE_PLAYBACK_RATE] : (state, action) => (
+    {
+      ...state,
+      playbackRate: action.playbackRate
+    }
+  )
 }
 
 // ------------------------------------
@@ -52,7 +66,8 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 const initialState = { 
   instructions: {},
-  selected: 0
+  selected: 0,
+  playbackRate: 1
 };
 
 export default function counterReducer (state = initialState, action) {

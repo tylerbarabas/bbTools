@@ -4,9 +4,9 @@ import FrameSelector from './FrameSelector'
 import AudioPlayer from './AudioPlayer'
 import InstructionsViewer from './InstructionsViewer'
 
-export const LipSyncer = ({ data, selectFrame }) => (
+export const LipSyncer = ({ data, selectFrame, changePlaybackRate }) => (
   <div>
-    <AudioPlayer />
+    <AudioPlayer data={data} changePlaybackRate={changePlaybackRate} />
     <InstructionsViewer data={data}/>
     <FrameSelector selectFrame={selectFrame} data={data} />
   </div>

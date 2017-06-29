@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { selectFrame } from '../modules/lipsyncer'
+import { selectFrame, changePlaybackRate } from '../modules/lipsyncer'
 
 /*  This is a container component. Notice it does not contain any JSX,
     nor does it import React. This component is **only** responsible for
@@ -13,7 +13,8 @@ import LipSyncer from '../components/LipSyncer'
     implementing our wrapper around increment; the component doesn't care   */
 
 const mapDispatchToProps = {
-  selectFrame
+  selectFrame,
+  changePlaybackRate
 }
 
 const mapStateToProps = (state) => ({
