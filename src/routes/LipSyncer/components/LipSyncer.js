@@ -3,9 +3,11 @@ import PropTypes from 'prop-types'
 import FrameSelector from './FrameSelector'
 import AudioPlayer from './AudioPlayer'
 import InstructionsViewer from './InstructionsViewer'
+import SpriteDisplay from './SpriteDisplay'
 
 export const LipSyncer = ({ data, selectFrame, changePlaybackRate }) => (
   <div>
+    <SpriteDisplay data={data} />
     <AudioPlayer data={data} changePlaybackRate={changePlaybackRate} />
     <InstructionsViewer data={data}/>
     <FrameSelector selectFrame={selectFrame} data={data} />
