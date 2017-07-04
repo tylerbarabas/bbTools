@@ -10,13 +10,13 @@ const Container = styled.div`
 
 const Selection = styled.div`
   display: inline-block;
-  margin: 20px;
-  height: 200px;
-  width: 200px;
+  margin: 10px;
+  height: 100px;
+  width: 100px;
 `;
 
 const active = styledClass`
-  outline: ${ (props) => (props.id === props.selected) ? '1px solid red' : 'none' }
+  outline: ${ (props) => (props.id === props.selected) ? '1px solid blue' : 'none' }
 `;
 
 

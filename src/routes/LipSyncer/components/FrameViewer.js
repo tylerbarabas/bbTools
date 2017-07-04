@@ -1,15 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import json from '../../../../public/img/mouth.json'
 
-const Img = styled.img`
-  height: 100%;
-  width: 100%;
-  display: block;
+const Frame = styled.div`
+  margin: 0 auto;
 `;
 
-export const FrameViewer = ({frame}) => (
-<Img src="https://target.scene7.com/is/image/Target/52298764_Alt01?wid=520&hei=520&fmt=pjpeg" />
-)
+class FrameViewer extends React.Component {
+
+  constructor(props) {
+    super();
+    this.ss = new createjs.SpriteSheet(json);
+    this.frame = this.ss._frames[props.frame];
+    this.style = {
+      backgroundImage: 'url('+this.frame.image.src+')',
+      height: this.frame.rect.height,
+      width: this.frame.rect.width,
+      backgroundPositionX: -this.frame.rect.x,
+      backgroundPositionY: -this.frame.rect.y,
+      marginTop: 'calc(50% - '+this.frame.rect.height/2+'px)'
+    };
+  }
+
+  render() {
+    return (
+      <Frame style={this.style} />
+    )
+  }
+}
 
 export default FrameViewer

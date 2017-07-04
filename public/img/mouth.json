@@ -21,6 +21,6 @@
         "speed": 0.2
       }
   },
-  "images": ["/project_components/mouth/img/bbmouth2.png"],
+  "images": ["/img/mouth.png"],
   "size": {"width": 90, "height": 50}
 }
