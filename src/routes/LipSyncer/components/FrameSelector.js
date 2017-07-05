@@ -27,39 +27,20 @@ frameClicked(id) {
   this.props.selectFrame(id, audioPlayer.currentTime, this.props.data)
 }
 
-render() {
-  let { data, selectFrame } = this.props;
-  return (
-    <div>
+
+  render() {
+    let { data, selectFrame } = this.props;
+    return (
       <Container>
-        <Selection onClick={this.frameClicked.bind(this,0)} className={active({id:0,selected: data.selected})}>
-          <FrameViewer frame={0} />
-        </Selection>
-        <Selection onClick={this.frameClicked.bind(this,1)} className={active({id:1,selected: data.selected})}>
-          <FrameViewer frame={1} />
-        </Selection>
-        <Selection onClick={this.frameClicked.bind(this,2)} className={active({id:2,selected: data.selected})}>
-          <FrameViewer frame={2} />
-        </Selection>
-        <Selection onClick={this.frameClicked.bind(this,3)} className={active({id:3,selected: data.selected})}>
-          <FrameViewer frame={3} />
-        </Selection>
+        {data.json.frames.map((frame,i)=>{
+          let markup = [];
+          markup.push(<Selection key={i} onClick={this.frameClicked.bind(this,i)} className={active({id:i,selected: data.selected})}>
+            <FrameViewer frame={i} />
+          </Selection>);
+          if ((i+1)%4 === 0) markup.push(<br />);
+          return markup;
+        })}
       </Container>
-      <Container>
-        <Selection onClick={this.frameClicked.bind(this,4)} className={active({id:4,selected: data.selected})}>
-          <FrameViewer frame={4} />
-        </Selection>
-        <Selection onClick={this.frameClicked.bind(this,5)} className={active({id:5,selected: data.selected})}>
-          <FrameViewer frame={5} />
-        </Selection>
-        <Selection onClick={this.frameClicked.bind(this,6)} className={active({id:6,selected: data.selected})}>
-          <FrameViewer frame={6} />
-        </Selection>
-        <Selection onClick={this.frameClicked.bind(this,7)} className={active({id:7,selected: data.selected})}>
-          <FrameViewer frame={7} />
-        </Selection>
-      </Container>
-    </div>
     )
   }
 }
