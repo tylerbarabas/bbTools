@@ -54,7 +54,7 @@ const compileAnim = (instructions) => {
 
       let lastInst = values[i-1] || {time: 0, frameid: inst.frameid},
           timeDiff = inst.time - lastInst.time,
-          numFrames = (timeDiff * framerate)-1;
+          numFrames = (timeDiff * framerate)-2;
 
       for (var o=0;o<numFrames;o++){
         arr.push(lastInst.frameid);
