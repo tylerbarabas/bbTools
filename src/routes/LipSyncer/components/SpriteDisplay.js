@@ -33,6 +33,7 @@ class SpriteDisplay extends React.Component {
 
     this.audioPlayer.addEventListener('play',this.changeAnim.bind(this,'seq',null));
     this.audioPlayer.addEventListener('seeked',this.changeAnim.bind(this,'seq',null));
+    this.audioPlayer.addEventListener('pause',this.changeAnim.bind(this,'seq',null));
   }
 
   handleTick(e) {
@@ -40,6 +41,8 @@ class SpriteDisplay extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('props',nextProps);
+    this.ss._data.seq.speed = nextProps.data.playbackRate;
     this.changeAnim('seq',nextProps);
   }
 

@@ -24,7 +24,7 @@ export function selectFrame (frameid = 0, time = 0) {
 export function changePlaybackRate ( newRate = 1 ) {
   return {
     type: CHANGE_PLAYBACK_RATE,
-    rate: newRate
+    rate: parseFloat(newRate)
   }
 }
 
@@ -99,7 +99,7 @@ const ACTION_HANDLERS = {
   [CHANGE_PLAYBACK_RATE] : (state, action) => (
     {
       ...state,
-      playbackRate: action.playbackRate
+      playbackRate: action.rate
     }
   )
 }
