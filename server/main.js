@@ -65,4 +65,8 @@ if (project.env === 'development') {
   app.use(express.static(path.resolve(project.basePath, project.outDir)))
 }
 
+app.post('/save',function(){
+  console.log('saving');
+});
+
 module.exports = app
