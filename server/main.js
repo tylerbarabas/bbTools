@@ -19,7 +19,7 @@ app.post('/save',function(req,res){
     frames: req.body.state.anim,
     speed: 1
   };
-  fs.writeFile('./public/exports/mouth-'+Date.now()+'.json',JSON.stringify(json),()=>{
+  fs.writeFile('./public/exports/mouth-'+new Date().toUTCString().replace(',','').split(' ').join('_')+'.json',JSON.stringify(json),()=>{
     res.send(json);
   });
 });

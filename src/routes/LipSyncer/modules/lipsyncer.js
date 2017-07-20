@@ -36,30 +36,17 @@ export function save () {
       state: getState().lipsyncer
     })
     .then(function (response) {
-      console.log(response);
       dispatch({
         type: SAVE,
         payload: getState().lipsyncer
       });
     })
     .catch(function (error) {
-      console.log(error);
       dispatch({
         type: SAVE,
         payload: getState().lipsyncer
       });
     });
-/*
-    return new Promise((resolve)=>{
-      setTimeout(()=>{
-        dispatch({
-          type: SAVE,
-          payload: getState().lipsyncer
-        })
-        resolve()
-      },200);
-    })
-*/
   } 
 }
 
