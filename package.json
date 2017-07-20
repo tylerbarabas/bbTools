@@ -21,6 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
     "bootstrap": "^4.0.0-alpha",
     "compression": "^1.6.2",
     "createjs-easeljs": "^0.8.2",

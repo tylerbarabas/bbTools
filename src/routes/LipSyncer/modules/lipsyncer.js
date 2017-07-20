@@ -1,12 +1,12 @@
 import uuidv4 from 'uuid-v4'
 import json from '../../../../public/img/mouth.json'
-
+import axios from 'axios'
 // ------------------------------------
 // Constants
 // ------------------------------------
 export const SELECT_FRAME = 'SELECT_FRAME'
 export const CHANGE_PLAYBACK_RATE = 'CHANGE_PLAYBACK_RATE'
-
+export const SAVE = 'SAVE'
 // ------------------------------------
 // Actions
 // ------------------------------------
@@ -24,13 +24,49 @@ export function selectFrame (frameid = 0, time = 0) {
 export function changePlaybackRate ( newRate = 1 ) {
   return {
     type: CHANGE_PLAYBACK_RATE,
-    rate: parseFloat(newRate)
+    payload: {
+      rate: parseFloat(newRate)
+    }
   }
+}
+
+export function save () {
+  return (dispatch, getState) => {
+    axios.post('/save', {
+      state: getState().lipsyncer
+    })
+    .then(function (response) {
+      console.log(response);
+      dispatch({
+        type: SAVE,
+        payload: getState().lipsyncer
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+      dispatch({
+        type: SAVE,
+        payload: getState().lipsyncer
+      });
+    });
+/*
+    return new Promise((resolve)=>{
+      setTimeout(()=>{
+        dispatch({
+          type: SAVE,
+          payload: getState().lipsyncer
+        })
+        resolve()
+      },200);
+    })
+*/
+  } 
 }
 
 export const actions = {
   selectFrame,
-  changePlaybackRate
+  changePlaybackRate,
+  save
 }
 
 //------------------------------------
@@ -99,7 +135,12 @@ const ACTION_HANDLERS = {
   [CHANGE_PLAYBACK_RATE] : (state, action) => (
     {
       ...state,
-      playbackRate: action.rate
+      playbackRate: action.payload.rate
+    }
+  ),
+  [SAVE] : (state, action) => (
+    {
+      ...state
     }
   )
 }

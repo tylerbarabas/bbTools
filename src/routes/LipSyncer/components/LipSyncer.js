@@ -5,9 +5,9 @@ import AudioPlayer from './AudioPlayer'
 import InstructionsViewer from './InstructionsViewer'
 import SpriteDisplay from './SpriteDisplay'
 
-export const LipSyncer = ({ data, selectFrame, changePlaybackRate }) => (
+export const LipSyncer = ({ data, selectFrame, changePlaybackRate, save }) => (
   <div>
-    <SpriteDisplay data={data} />
+    <SpriteDisplay data={data} save={save} />
     <AudioPlayer data={data} changePlaybackRate={changePlaybackRate} />
     <InstructionsViewer data={data}/>
     <FrameSelector selectFrame={selectFrame} data={data} />

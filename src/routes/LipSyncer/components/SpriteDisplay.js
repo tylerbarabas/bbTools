@@ -41,7 +41,6 @@ class SpriteDisplay extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('props',nextProps);
     this.ss._data.seq.speed = nextProps.data.playbackRate;
     this.changeAnim('seq',nextProps);
   }
@@ -69,10 +68,17 @@ class SpriteDisplay extends React.Component {
     this.stage.addChild(this.animation);
   }
 
+  clicked(){
+    this.props.save();
+  }
+
   render(){
     return (
-      <Canvas id="stage">
-      </Canvas>
+      <div>
+        <Canvas id="stage">
+        </Canvas>
+        <button type="button" onClick={this.clicked.bind(this)}>Save</button>
+      </div>
     )
   }
 

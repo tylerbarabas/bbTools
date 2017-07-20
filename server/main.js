@@ -5,9 +5,24 @@ const logger = require('../build/lib/logger')
 const webpackConfig = require('../build/webpack.config')
 const project = require('../project.config')
 const compress = require('compression')
-
+const bodyParser = require('body-parser')
+const fs = require('fs')
 const app = express()
+
 app.use(compress())
+app.use(bodyParser());
+
+app.post('/save',function(req,res){
+  let json = req.body.state.json;
+  json.animations.song = {
+    next: false,
+    frames: req.body.state.anim,
+    speed: 1
+  };
+  fs.writeFile('./public/exports/mouth-'+Date.now()+'.json',JSON.stringify(json),()=>{
+    res.send(json);
+  });
+});
 
 // ------------------------------------
 // Apply Webpack HMR Middleware
@@ -65,8 +80,5 @@ if (project.env === 'development') {
   app.use(express.static(path.resolve(project.basePath, project.outDir)))
 }
 
-app.post('/save',function(){
-  console.log('saving');
-});
 
 module.exports = app
