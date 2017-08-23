@@ -7,10 +7,10 @@ import SpriteDisplay from './SpriteDisplay'
 
 export const LipSyncer = ({ data, selectFrame, changePlaybackRate, save }) => (
   <div>
-    <SpriteDisplay data={data} save={save} />
+    <SpriteDisplay data={data} />
     <AudioPlayer data={data} changePlaybackRate={changePlaybackRate} />
     <InstructionsViewer data={data}/>
-    <FrameSelector selectFrame={selectFrame} data={data} />
+    <FrameSelector save={save} selectFrame={selectFrame} data={data} />
   </div>
 )
 

@@ -27,6 +27,9 @@ frameClicked(id) {
   this.props.selectFrame(id, audioPlayer.currentTime, this.props.data)
 }
 
+  saveClicked(){
+    this.props.save();
+  }
 
   render() {
     let { data, selectFrame } = this.props;
@@ -40,6 +43,8 @@ frameClicked(id) {
           if ((i+1)%4 === 0) markup.push(<br />);
           return markup;
         })}
+        <br />
+        <button onClick={this.saveClicked.bind(this)} >Save</button>
       </Container>
     )
   }

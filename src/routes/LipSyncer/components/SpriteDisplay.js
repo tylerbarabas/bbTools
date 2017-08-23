@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import json from '../../../../public/img/mouth.json'
 
 const Canvas = styled.canvas`
+  margin-top: 50px;
   height: 100px;
   width: 100px;
 `;
@@ -68,16 +69,11 @@ class SpriteDisplay extends React.Component {
     this.stage.addChild(this.animation);
   }
 
-  clicked(){
-    this.props.save();
-  }
-
   render(){
     return (
       <div>
         <Canvas id="stage">
         </Canvas>
-        <button type="button" onClick={this.clicked.bind(this)}>Save</button>
       </div>
     )
   }
